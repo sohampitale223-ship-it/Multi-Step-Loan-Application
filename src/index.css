@@ -28,7 +28,7 @@ body {
 
 .main-layout__content {
   flex: 1;
-  padding: 2rem;
+  padding: 2rem 1rem 3rem;
 }
 
 .navbar,
@@ -41,4 +41,38 @@ input,
 select,
 textarea {
   font: inherit;
+}
+
+.navbar { border-bottom: 1px solid #e2e8f0; background: #fff; color: #173b67; font-weight: 750; }
+.footer { color: #64748b; text-align: center; font-size: .875rem; }
+.application-page { width: min(100%, 70rem); margin: 0 auto; }
+.application-page__header { margin-bottom: 1.5rem; text-align: center; }
+.application-page__header h1 { margin: 0; color: #102a43; font-size: clamp(1.65rem, 4vw, 2.25rem); }
+.application-page__header p { margin: .45rem 0 0; color: #52667a; }
+.stepper { margin-bottom: 1.5rem; overflow-x: auto; scrollbar-width: thin; }
+.stepper__list { display: flex; min-width: 45rem; margin: 0; padding: 0 0 .5rem; list-style: none; }
+.stepper__item { position: relative; display: flex; flex: 1; flex-direction: column; align-items: center; gap: .4rem; color: #64748b; font-size: .75rem; text-align: center; }
+.stepper__item:not(:last-child)::after { position: absolute; top: 1rem; left: calc(50% + 1rem); width: calc(100% - 2rem); height: 2px; background: #cbd5e1; content: ''; }
+.stepper__number { z-index: 1; display: grid; width: 2rem; height: 2rem; place-items: center; border: 2px solid #cbd5e1; border-radius: 50%; background: #f8fafc; font-weight: 700; }
+.stepper__item--active { color: #174ea6; font-weight: 700; }
+.stepper__item--active .stepper__number { border-color: #1d4ed8; background: #1d4ed8; color: white; }
+.application-card { width: min(100%, 41rem); margin: 0 auto; padding: clamp(1.25rem, 4vw, 2.25rem); border: 1px solid #dbe4ee; border-radius: .9rem; background: #fff; box-shadow: 0 12px 35px rgba(15, 42, 67, .08); }
+.application-card h2 { margin: 0; color: #102a43; font-size: clamp(1.25rem, 4vw, 1.6rem); }
+.application-card__eyebrow { margin: 0 0 .4rem; color: #1d4ed8; font-size: .8rem; font-weight: 750; letter-spacing: .04em; text-transform: uppercase; }
+.application-card__intro { margin: .45rem 0 1.5rem; color: #52667a; }
+.loan-form { display: grid; gap: 1.25rem; }
+.loan-form__actions { display: flex; justify-content: flex-end; padding-top: .3rem; }
+.button { min-height: 2.75rem; padding: .65rem 1.2rem; border: 1px solid transparent; border-radius: .5rem; cursor: pointer; font-weight: 700; }
+.button:focus-visible { outline: 3px solid #60a5fa; outline-offset: 2px; }
+.button--primary { background: #1d4ed8; color: #fff; }
+.button--primary:hover { background: #1e40af; }
+.button--secondary { border-color: #94a3b8; background: #fff; color: #1e3a5f; }
+.step-placeholder p { margin: .65rem 0 1.5rem; color: #52667a; }
+
+@media (max-width: 480px) {
+  .main-layout__content { padding: 1.25rem .75rem 2rem; }
+  .navbar, .footer { padding: 1rem; }
+  .stepper__list { min-width: 39rem; }
+  .application-card { border-radius: .7rem; }
+  .loan-form__actions .button { width: 100%; }
 }

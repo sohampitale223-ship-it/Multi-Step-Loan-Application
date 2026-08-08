@@ -1,7 +1,8 @@
 import AppRoutes from './routes/AppRoutes'
+import { FormProvider } from './context/FormContext'
 
 function App() {
-  return <AppRoutes />
+  return <FormProvider><AppRoutes /></FormProvider>
 }
 
 export default App
