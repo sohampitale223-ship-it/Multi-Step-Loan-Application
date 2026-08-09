@@ -56,7 +56,7 @@ describe('Day 3 loan application', () => {
 
   it('advances after valid submission and preserves values after Back', async () => {
     const user = userEvent.setup(); renderPage(); await fillValid(user); await user.type(screen.getByLabelText(/Referral Code/), 'abc123'); await user.click(screen.getByRole('button', { name: /Continue/ }))
-    expect(await screen.findByText('Coming in the next implementation.')).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: /Step 2.*Personal Information/ })).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: /Back/ }))
     expect(screen.getByRole('radio', { name: 'Personal Loan' })).toBeChecked()
     expect(screen.getByLabelText(/Loan Amount/)).toHaveValue('₹5,00,000')
