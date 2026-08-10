@@ -7,7 +7,7 @@ const rules = {
 };
 
 const MaskedInput = forwardRef(function MaskedInput(
-  { maskType = "pan", id, label, helpText, error, required = false, disabled = false, value, defaultValue = "", onChange, onFocus, onBlur, className = "", ...props },
+  { maskType = "pan", id, label, helpText, error, required = false, disabled = false, forceMasked = false, value, defaultValue = "", onChange, onFocus, onBlur, className = "", ...props },
   ref,
 ) {
   const rule = rules[maskType.toLowerCase()] || rules.pan;
@@ -31,7 +31,7 @@ const MaskedInput = forwardRef(function MaskedInput(
           type="text"
           inputMode={maskType.toLowerCase() === "aadhaar" ? "numeric" : "text"}
           className={`form-control ${className}`.trim()}
-          value={focused ? rawValue : rule.mask(rawValue)}
+          value={focused && !forceMasked ? rawValue : rule.mask(rawValue)}
           onChange={handleChange}
           onFocus={(event) => { setFocused(true); onFocus?.(event); }}
           onBlur={(event) => { setFocused(false); onBlur?.(event); }}

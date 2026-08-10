@@ -80,6 +80,11 @@ textarea {
 .verification-spinner { display: inline-block; width: .9rem; height: .9rem; border: 2px solid #93c5fd; border-top-color: #1d4ed8; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -.1rem; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .step-placeholder p { margin: .65rem 0 1.5rem; color: #52667a; }
+.address-section { display: grid; gap: 1rem; min-width: 0; margin: 0; padding: 1.1rem; border: 1px solid #dbe4ee; border-radius: .65rem; }
+.address-section legend { padding: 0 .35rem; color: #173b67; font-size: .9rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.address-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.lookup-status { margin: -.65rem 0 0; color: #52667a; font-size: .875rem; }
+.lookup-status--success { color: #166534; }
 
 @media (max-width: 480px) {
   .main-layout__content { padding: 1.25rem .75rem 2rem; }
@@ -89,5 +94,6 @@ textarea {
   .loan-form__actions { flex-direction: column-reverse; }
   .loan-form__actions .button { width: 100%; }
   .verification-field { grid-template-columns: 1fr; }
+  .address-grid { grid-template-columns: 1fr; }
   .verification-field .button { width: 100%; }
 }

@@ -38,6 +38,31 @@ describe('Step 3 KYC', () => {
     expect(screen.getByLabelText(/PAN Number/)).toBeInTheDocument()
     expect(screen.getByLabelText(/Aadhaar Number/)).toBeInTheDocument()
     expect(screen.getByRole('checkbox', { name: /I consent/ })).not.toBeChecked()
+    expect(screen.getByText('Format: AAAAA9999A. Example test PAN: ABCPD1234F')).toBeInTheDocument()
+  })
+
+  it('uppercases PAN, shows it while editing, and masks it after blur', () => {
+    renderStep()
+    const pan = screen.getByLabelText(/PAN Number/)
+    fireEvent.focus(pan)
+    fireEvent.change(pan, { target: { value: validPan } })
+    expect(pan).toHaveValue('ABCPD1234E')
+    fireEvent.blur(pan)
+    expect(pan).toHaveValue('******234E')
+    fireEvent.focus(pan)
+    expect(pan).toHaveValue('ABCPD1234E')
+  })
+
+  it('masks PAN after successful verification while retaining the raw form value', async () => {
+    const result = renderStep()
+    const pan = screen.getByLabelText(/PAN Number/)
+    fireEvent.focus(pan)
+    fireEvent.change(pan, { target: { value: validPan } })
+    fireEvent.click(screen.getByRole('button', { name: 'Verify PAN' }))
+    await act(() => vi.advanceTimersByTimeAsync(1500))
+    expect(pan).toHaveValue('******234E')
+    fireEvent.click(screen.getByRole('button', { name: /Back/ }))
+    expect(result.updateFormData).toHaveBeenCalledWith(expect.objectContaining({ panNumber: 'ABCPD1234E' }))
   })
 
   it('rejects invalid PAN and invalid Aadhaar', async () => {
