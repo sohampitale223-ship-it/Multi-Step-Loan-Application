@@ -14,10 +14,10 @@ const fillValid = async (user, type = 'Personal Loan', amount = '500000') => {
 }
 
 describe('Day 3 loan application', () => {
-  it('renders Step 1 and all eight progress steps', () => {
+  it('renders Step 1 and omits conditional Step 6 before loan details are entered', () => {
     renderPage()
     expect(screen.getByRole('heading', { name: 'Loan Type & Basic Information' })).toBeInTheDocument()
-    expect(within(screen.getByRole('navigation', { name: 'Application progress' })).getAllByRole('listitem')).toHaveLength(8)
+    expect(within(screen.getByRole('navigation', { name: 'Application progress' })).getAllByRole('listitem')).toHaveLength(7)
   })
 
   it('requires a loan type and focuses it on continue', async () => {
