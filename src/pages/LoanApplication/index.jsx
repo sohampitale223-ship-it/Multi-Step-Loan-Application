@@ -10,6 +10,7 @@ import Step4Address from '../../steps/Step4Address'
 import Step5Employment from '../../steps/Step5Employment'
 import Step6CoApplicant from '../../steps/Step6CoApplicant'
 import Step7Documents from '../../steps/Step7Documents'
+import Step8Review from '../../steps/Step8Review'
 import { shouldShowCoApplicant } from '../../utils/coApplicant'
 
 function LoanApplication() {
@@ -48,7 +49,7 @@ function LoanApplication() {
       {currentStep === 5 && <><h2 id="step-heading">Step 5 – Employment &amp; Income</h2><p className="application-card__intro">Tell us about your employment and income.</p><Step5Employment onBack={() => setCurrentStep(4)} onContinue={() => setCurrentStep(showCoApplicant ? 6 : 7)} /></>}
       {currentStep === 6 && showCoApplicant && <><h2 id="step-heading">Co-Applicant Details</h2><p className="application-card__intro">Provide the details of the co-applicant supporting this loan application.</p><Step6CoApplicant onBack={() => setCurrentStep(5)} onContinue={() => setCurrentStep(7)} /></>}
       {currentStep === 7 && <><h2 id="step-heading">Documents &amp; E-Signature</h2><p className="application-card__intro">Upload the required documents and provide your signature.</p><Step7Documents onBack={() => setCurrentStep(showCoApplicant ? 6 : 5)} onContinue={() => setCurrentStep(8)} /></>}
-      {currentStep === 8 && <div className="step-placeholder"><h2 id="step-heading">Step 8 – Review &amp; Pre-Approval Summary</h2><p>Coming in the next implementation.</p><button className="button button--secondary" type="button" onClick={() => setCurrentStep(7)}>← Back</button></div>}
+      {currentStep === 8 && <><h2 id="step-heading">Step 8 – Review &amp; Pre-Approval Summary</h2><p className="application-card__intro">Review your details, indicative loan terms, and consents before submitting.</p><Step8Review onBack={() => setCurrentStep(7)} onEdit={setCurrentStep} onSubmitted={() => persisted.discardDraft()} /></>}
       <div className="save-status" aria-live="polite"><button className="save-link" type="button" onClick={autoSave.saveNow} disabled={autoSave.isSaving || !Object.keys(formData).length}>{autoSave.isSaving ? 'Saving…' : 'Save Draft'}</button>{autoSave.lastSavedAt && <span>Auto-saved at {new Date(autoSave.lastSavedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</span>}{autoSave.saveError && <span>Draft could not be saved.</span>}</div>
     </section>
     {persisted.hasSavedDraft && <div className="modal-backdrop"><div className="resume-modal" role="dialog" aria-modal="true" aria-labelledby="resume-title" aria-describedby="resume-description" onKeyDown={modalKeyDown}><h2 id="resume-title">Resume your application?</h2><p id="resume-description">We found a saved loan application from {new Date(persisted.savedAt).toLocaleString()}. Would you like to continue where you left off?</p><div className="loan-form__actions loan-form__actions--split"><button ref={resumeButtonRef} className="button button--primary" type="button" onClick={resume}>Resume Application</button><button className="button button--secondary" type="button" onClick={startFresh}>Start Fresh</button></div></div></div>}
