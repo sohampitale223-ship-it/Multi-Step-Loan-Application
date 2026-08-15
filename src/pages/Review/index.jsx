@@ -1,5 +1,7 @@
+import { Navigate } from 'react-router-dom'
+
 function Review() {
-  return <h1>Review</h1>
+  return <Navigate to="/apply" replace />
 }
 
 export default Review

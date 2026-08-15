@@ -20,6 +20,20 @@ body {
   min-height: 100vh;
 }
 
+.success-page { display: grid; min-height: 70vh; place-items: center; padding: 1rem; }
+.success-page__card { width: min(100%, 38rem); border: 1px solid #bbf7d0; border-radius: 1rem; background: #fff; padding: clamp(1.5rem, 5vw, 2.75rem); box-shadow: 0 16px 45px rgba(15, 42, 67, .1); text-align: center; }
+.success-page__card h1 { margin: .4rem 0; color: #102a43; }
+.success-page__intro { color: #52667a; line-height: 1.6; }
+.success-summary { display: grid; gap: .75rem; margin: 1.25rem 0; text-align: left; }
+.success-summary div { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: .75rem; }
+.success-summary dt { color: #52667a; }
+.success-summary dd { margin: 0; font-weight: 700; text-align: right; }
+.success-page__action { display: inline-flex; align-items: center; justify-content: center; margin-top: 1rem; text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
 .main-layout {
   display: flex;
   min-height: 100vh;
