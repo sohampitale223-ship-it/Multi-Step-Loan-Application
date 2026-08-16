@@ -1,0 +1,7 @@
+{
+  "loan": { "type": "business", "amount": "1500000", "tenure": "60", "purpose": "Business Expansion" },
+  "personal": { "fullName": "Rohan Mehta", "dateOfBirth": "1985-11-10", "gender": "male", "maritalStatus": "married", "fatherName": "Prakash Mehta", "motherName": "Asha Mehta", "email": "rohan.mehta@example.com", "mobileNumber": "9876543212" },
+  "kyc": { "pan": "ABCPD1234F", "aadhaar": "999999990019" },
+  "address": { "line1": "18 Business Park", "pinCode": "400001", "residenceType": "Owned", "years": "6" },
+  "employment": { "type": "business-owner", "businessName": "Mehta Trading Co", "businessType": "Partnership", "annualTurnover": "5000000", "yearsInBusiness": "6", "gstNumber": "27ABCPD1234F1Z5", "officeAddress": "18 Business Park, Mumbai" }
+}

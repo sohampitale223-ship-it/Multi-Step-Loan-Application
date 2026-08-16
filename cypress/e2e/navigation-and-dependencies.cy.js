@@ -1,0 +1,37 @@
+describe('Navigation and cross-step dependencies', () => {
+  it('does not skip or corrupt steps during rapid next and previous clicks', () => {
+    cy.fixture('valid-personal-loan').then((application) => {
+      cy.visit('/apply')
+      cy.fillStep1(application.loan)
+      cy.get('[data-testid="step-2"]').should('be.visible')
+      cy.contains('button', 'Back').dblclick()
+      cy.get('[data-testid="step-1"]').should('be.visible')
+      cy.contains('button', /^Continue/).click()
+      cy.get('[data-testid="step-2"]').should('be.visible')
+      cy.get('#full-name').should('have.value', '')
+    })
+  })
+
+  it('recalculates conditional steps after changing loan type and amount', () => {
+    cy.fixture('valid-personal-loan').then((application) => {
+      cy.visit('/apply')
+      cy.fillStep1(application.loan); cy.fillStep2(application.personal); cy.fillStep3(application.kyc); cy.fillStep4(application.address); cy.fillStep5(application.employment)
+      cy.contains('Documents & E-Signature').should('be.visible')
+      cy.contains('button', 'Back').click()
+      cy.contains('button', 'Back').click()
+      cy.contains('button', 'Back').click()
+      cy.contains('button', 'Back').click()
+      cy.get('[data-testid="step-1"]').should('be.visible')
+      cy.get('input[name="loanType"][value="home"]').check()
+      cy.get('#loan-amount').clear().type('700000')
+      cy.get('#loan-tenure').select('120')
+      cy.get('#loan-purpose').select('Purchase New Home')
+      cy.contains('button', /^Continue/).click()
+      cy.contains('button', /^Continue/).click()
+      cy.contains('button', /^Continue/).click()
+      cy.contains('button', /^Continue/).click()
+      cy.contains('button', /^Continue/).click()
+      cy.contains('Co-Applicant Details').should('be.visible')
+    })
+  })
+})

@@ -1,0 +1,7 @@
+{
+  "loan": { "type": "personal", "amount": "300000", "tenure": "36", "purpose": "Medical Expenses" },
+  "personal": { "fullName": "Aarav Sharma", "dateOfBirth": "1990-06-15", "gender": "male", "maritalStatus": "single", "fatherName": "Rajesh Sharma", "motherName": "Sunita Sharma", "email": "aarav.sharma@example.com", "mobileNumber": "9876543210" },
+  "kyc": { "pan": "ABCPD1234F", "aadhaar": "999999990019" },
+  "address": { "line1": "12 MG Road", "pinCode": "560001", "residenceType": "Owned", "years": "3" },
+  "employment": { "type": "salaried", "companyName": "LendSwift Technologies", "designation": "Software Engineer", "monthlySalary": "100000", "experience": "5" }
+}

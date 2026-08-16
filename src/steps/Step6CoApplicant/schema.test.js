@@ -5,6 +5,7 @@ const valid = { name: 'Asha Rao', relationship: 'spouse', pan: 'ABCPD1234F', mon
 
 describe('step6Schema', () => {
   it('accepts complete co-applicant data', () => expect(step6Schema.safeParse(valid).success).toBe(true))
+  it('accepts normalized saved income', () => expect(step6Schema.safeParse({ ...valid, monthlyIncome: 45000 }).success).toBe(true))
   it.each([
     ['pan', 'INVALID'], ['monthlyIncome', ''], ['consent', false], ['signature', ''],
   ])('rejects invalid %s', (field, value) => expect(step6Schema.safeParse({ ...valid, [field]: value }).success).toBe(false))

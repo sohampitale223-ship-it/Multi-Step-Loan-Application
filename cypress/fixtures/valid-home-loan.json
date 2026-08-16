@@ -1,0 +1,8 @@
+{
+  "loan": { "type": "home", "amount": "5000000", "tenure": "240", "purpose": "Purchase New Home" },
+  "personal": { "fullName": "Neha Verma", "dateOfBirth": "1988-03-20", "gender": "female", "maritalStatus": "married", "fatherName": "Ramesh Verma", "motherName": "Kavita Verma", "email": "neha.verma@example.com", "mobileNumber": "9876543211" },
+  "kyc": { "pan": "ABCPD1234F", "aadhaar": "999999990019" },
+  "address": { "line1": "45 Residency Road", "pinCode": "560001", "residenceType": "Owned", "years": "4" },
+  "employment": { "type": "salaried", "companyName": "HomeWorks India", "designation": "Product Manager", "monthlySalary": "250000", "experience": "8" },
+  "coApplicant": { "name": "Arjun Verma", "relationship": "spouse", "pan": "ABCPD1234F", "monthlyIncome": "180000" }
+}

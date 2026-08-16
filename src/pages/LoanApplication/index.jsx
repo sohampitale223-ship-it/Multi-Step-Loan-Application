@@ -36,12 +36,12 @@ function LoanApplication() {
     if (event.key === 'Tab') { const buttons = event.currentTarget.querySelectorAll('button'); const first = buttons[0]; const last = buttons[buttons.length - 1]; if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus() } else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() } }
   }
 
-  return <div className="application-page">
+  return <div className="application-page" data-testid="loan-application">
     <header className="application-page__header"><h1>Multi-Step Loan Application</h1><p>Complete your application securely</p></header>
     <Stepper currentStep={currentStep} showCoApplicant={showCoApplicant} />
     {(persisted.externalUpdate || persisted.persistenceError) && <div className="persistence-notice" role="status">{persisted.persistenceError || 'This application was updated in another tab.'}{persisted.persistenceError && <button className="button button--secondary" type="button" onClick={startFresh}>Start Fresh</button>}</div>}
-    <section className="application-card" aria-labelledby="step-heading">
-      <p className="application-card__eyebrow">Step {currentStep} of 8</p>
+    <section className="application-card" aria-labelledby="step-heading" data-testid={`step-${currentStep}`}>
+      <p className="application-card__eyebrow" data-testid="current-step">Step {currentStep} of 8</p>
       {currentStep === 1 && <><h2 id="step-heading">Loan Type &amp; Basic Information</h2><p className="application-card__intro">Tell us about the loan you are looking for.</p><Step1LoanType onContinue={() => setCurrentStep(2)} /></>}
       {currentStep === 2 && <><h2 id="step-heading">Step 2 – Personal Information</h2><p className="application-card__intro">Provide your personal and contact details.</p><Step2Personal onBack={() => setCurrentStep(1)} onContinue={() => setCurrentStep(3)} /></>}
       {currentStep === 3 && <><h2 id="step-heading">Step 3 – Identity Verification (KYC)</h2><p className="application-card__intro">Verify your identity details securely.</p><Step3KYC onBack={() => setCurrentStep(2)} onContinue={() => setCurrentStep(4)} /></>}
